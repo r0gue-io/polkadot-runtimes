@@ -3,13 +3,13 @@ name: release
 on:
   workflow_dispatch:
     inputs:
-      release: # e.g. 'v1.2.7'
+      release: # e.g. 'v1.4.2'
         description: Polkadot runtime release tag
         required: true
-      rust: # e.g. '1.77.0'
+      rust: # e.g. '1.84.1'
         description: Rust version
         required: true
-      title: # e.g. 'Runtimes 1.2.7'
+      title: # e.g. 'Runtimes 1.4.2'
         description: Release title
         required: true
 
@@ -80,9 +80,9 @@ jobs:
 
       # Add package to workflow
       - name: Upload archives
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: binaries
+          name: env.archive
           path: |
             runtimes/${{ env.path }}/${{ env.archive }}
 
